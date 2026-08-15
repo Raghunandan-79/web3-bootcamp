@@ -124,3 +124,83 @@
 // // Check your balances in the explorer
 
 // // Import the token in Phantom and see the balances
+
+
+/* 
+    PDAs
+
+    When you created an `associated token account` , you actually created a PDA - 
+
+    https://github.com/solana-labs/solana-program-library/blob/ab830053c59c9c35bc3a727703aacf40c1215132/associated-token-account/program/src/processor.rs#L81
+
+    JS - https://github.com/solana-labs/solana-program-library/blob/ab830053c59c9c35bc3a727703aacf40c1215132/token/js/src/state/mint.ts#L171
+*/
+
+/* 
+    Token-22 program
+    Ref - https://spl.solana.com/token-2022
+
+        A token program on the Solana blockchain, defining a common implementation for fungible and non-fungible tokens.
+
+        The Token-2022 Program, also known as Token Extensions, is a superset of the functionality provided by the Token Program.
+
+        - Create token mint
+            
+            ```jsx
+            spl-token create-token  --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb
+            ```
+  
+        - Create an associated token account
+            
+            ```jsx
+            spl-token create-account 8fTM5XYRaoTJU9PLUuyakF3EypQ4RXL5HxKtiw2z9pQQ
+            ```
+            
+        - Mint the tokens
+            
+            ```jsx
+            spl-token mint 8fTM5XYRaoTJU9PLUuyakF3EypQ4RXL5HxKtiw2z9pQQ  100
+            ```
+*/
+
+/* 
+    Token-22 with Metadata
+
+    # Token-22 with metadata
+
+    https://cdn.100xdevs.com/metadata.json
+
+    - Create a token with metadata enabled
+        
+        ```jsx
+        spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token --enable-metadata
+        ```
+        
+    - Create metadata
+        
+        ```jsx
+        spl-token initialize-metadata pXfZ6Hg2s78m1iSRVsdzos9TmfkqkQdv5MmQrr77ZQK 100xx 100xxx https://cdn.100xdevs.com/metadata.json
+        ```
+        
+    - Create ATA
+        
+        ```jsx
+        spl-token create-account pXfZ6Hg2s78m1iSRVsdzos9TmfkqkQdv5MmQrr77ZQK
+        ```
+        
+    - Mint
+        
+        ```jsx
+        spl-token mint 1000
+        ```
+        
+    - Check out the token in your wallet
+        
+        !Screenshot 2024-08-23 at 6.53.42 PM.png
+        
+
+    ## Assignment
+
+    1. Show all the tokens that the user has in our web based wallet (ref -`getTokenAccountsByOwner` RPC method)
+    2. Create a token launchpad website that lets users launch tokens (take things like decimals, freeze athority as inputs from the user)
+*/
