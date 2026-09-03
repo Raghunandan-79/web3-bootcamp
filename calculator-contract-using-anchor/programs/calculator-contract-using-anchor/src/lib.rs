@@ -40,7 +40,12 @@ pub struct NewAccount {
 
 #[derive(Accounts)]
 pub struct Initialize<'info> {
-    #[account(init, payer = signer, space = 8 + 4)]
+    #[account(
+        init, 
+        payer = signer, 
+        space = 8 + 4, 
+        owner = pubkey!("2hSsDXooo3eMmtR6BHxK53HEBEV1pohtLbpKA2hah6vg")
+    )]
     pub new_account: Account<'info, NewAccount>,
     #[account(mut)]
     pub signer: Signer<'info>,
